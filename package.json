@@ -1,0 +1,25 @@
+{
+  "name": "lab",
+  "version": "1.0.0",
+  "description": "lab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://LoisnLois:lh950827@github.com/LoisnLois/lab.git"
+  },
+  "keywords": [
+    "lab"
+  ],
+  "author": "loho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoisnLois/lab/issues"
+  },
+  "homepage": "https://github.com/LoisnLois/lab#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
