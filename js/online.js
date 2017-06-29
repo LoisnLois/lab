@@ -40,7 +40,21 @@
 	}
 	
 	var sendmsg = function(){
-		send('m');
+		var pretime = new Date();
+		var sendval = $('.wrapint input').val();
+		if(sendval===''|| sendval.trim()===''){
+			var text = "不写点什么么？~_~";
+			toasttips(text);
+			return;
+		}
+		formattime(pretime.getHours());
+		formattime(pretime.getMinutes());
+		formattime(pretime.getSeconds());
+		$('#content').append('<div class="question"><span>'+now.slice(0,-1)+'</span><span></span><span>'+sendval+'</span></div>');
+		$('body').animate({scrollTop:$(document).height()});
+		now = '';
+		$('.wrapint input').val('');
+		sendbtn.removeClass("sendavailable");
 	};
 		//点击评价，弹框
 	comment.click(function(){
@@ -52,47 +66,9 @@
 		}
 	});
 	
-	//评价
-	getPingjia();
-	   
-	//获取数据库中详细的评价选项
-	function getPingjia(){
-		$.ajax({
-	        type: "POST",
-	        url: "getPJ",
-	        data: {action:'getPingjia'},
-	        cache: false,
-	        dataType: "json",
-	        success: function (data) {
-	        	if(data!=null){
-	        		var list = data.satisfactionVo;
-	        		satisfyRadio(list);
-	        	}
-	        }
-		});
-	}
+	
 	var str1 = "<span>解决问题能力</span><span>应答速度</span><span>系统功能</span><span>服务态度</span>";
 	var str2 = "<span>解决问题能力</span><span>看不懂</span><span>问题未问完就断线</span><span>回复速度慢</span><span>服务态度</span><span>推荐链接不可用</span>";
-	
-	//满意度评价选项配置
-	function satisfyRadio(list){
-		
-		for ( var i = 0; i < list.length; i++) {
-			var type = list[i].type;
-			var code = list[i].pCode;
-			var value = list[i].pValue;
-			
-			if("satisfy"==type){
-				//var str = "<span>"+value+"</span>  ";
-				str1 = "<span>解决问题能力</span><span>应答速度</span><span>系统功能</span><span>服务态度</span>";
-			}else if("unsatisfy"==type){
-				//var str = "<span>"+value+"</span>  ";
-				str2 = "<span>解决问题能力</span><span>看不懂</span><span>问题未问完就断线</span><span>回复速度慢</span><span>服务态度</span><span>推荐链接不可用</span>";
-			}
-		}
-		$("#passdetails").append(str1);
-		$("#denydetails").append(str2);
-	}
 
 	submitavailable();
 	//评价，点击满意度按钮，显示二级按钮
@@ -186,22 +162,24 @@
 				}
 			}
 		});
-		
-		
 	}
 	
 
 	//点击提交评价
 	$('.submitbtn').click(function(){
 		if($(this).hasClass('submitavailable')){
-			popup.hide();
-			$('.mask').hide();
-			$('.tipstoast').html("评价已提交，感谢您的支持");
-			$('.tipstoast').fadeIn(300);
-			setTimeout(function(){$('.tipstoast').fadeOut(300);},1000);
-			canPj=false;
+			var text = "评价已提交，感谢您的支持";
+			toasttips(text);
 		}
 	});
+
+	function toasttips(text){
+		popup.hide();
+		$('.mask').hide();
+		$('.tipstoast').html(text);
+		$('.tipstoast').fadeIn(300);
+		setTimeout(function(){$('.tipstoast').fadeOut(300);},1000);
+	}
 
 	//11,16,19位数字禁止发送
 	function digitExg(content){
