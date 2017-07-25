@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
-    minifyCss = require("gulp-minify-css"),
+    plugins = require('gulp-load-plugins')(),
     uglify = require("gulp-uglify"),
     sass = require("gulp-sass"),
-    livereload = require('gulp-livereload'),
+    minifyCss = require("gulp-minify-css"),
     watch = require('gulp-watch');
 
 //css文件压缩
@@ -26,6 +26,7 @@ gulp.task('compile-sass', function () {
     .pipe(sass())
     .pipe(gulp.dest('dist/css'));
 });
+
 //监控变更，自动刷新
 gulp.task('watch', function() {
   gulp.watch('sass/*.sass', ['minify-css','compile-sass']);
