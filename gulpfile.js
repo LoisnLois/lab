@@ -22,13 +22,13 @@ gulp.task('minify-js', function () {
 
 //sass的编译
 gulp.task('compile-sass', function () {
-    gulp.src('sass/*.sass')
+    gulp.src('sass/*.scss')
     .pipe(sass())
     .pipe(gulp.dest('dist/css'));
 });
 
 //监控变更，自动刷新
 gulp.task('watch', function() {
-  gulp.watch('sass/*.sass', ['minify-css','compile-sass']);
+  gulp.watch('sass/*.scss', ['minify-css','compile-sass']);
   gulp.watch('js/*.js', ['minify-js']);
 });

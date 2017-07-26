@@ -1,0 +1,144 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+html, body {
+  overflow: hidden;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
+.box {
+  width: 564px;
+  height: 170px; }
+  .box div {
+    width: 141px;
+    height: 85px;
+    float: left;
+    margin-top: 75px;
+    margin-left: -141px;
+    background: url(img/bird1.png);
+    /* 用于Firefox 可无视 */
+    -webkit-animation: myFrist 1s linear infinite;
+    -moz-animation: myFrist 1s linear infinite;
+    -o-animation: myFrist 1s linear infinite;
+    animation: myFrist 1s linear infinite; }
+
+@-webkit-keyframes myFrist {
+  0% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; }
+  12.5% {
+    background: url(img/bird2.png);
+    background-size: 100% 100%; }
+  25% {
+    background: url(img/bird3.png);
+    background-size: 100% 100%; }
+  37.5% {
+    background: url(img/bird4.png);
+    background-size: 100% 100%; }
+  50% {
+    background: url(img/bird5.png);
+    background-size: 100% 100%; }
+  65.7% {
+    background: url(img/bird6.png);
+    background-size: 100% 100%; }
+  75% {
+    background: url(img/bird7.png);
+    background-size: 100% 100%; }
+  87.5% {
+    background: url(img/bird8.png);
+    background-size: 100% 100%; }
+  100% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; } }
+
+@-moz-keyframes myFrist {
+  0% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; }
+  12.5% {
+    background: url(img/bird2.png);
+    background-size: 100% 100%; }
+  25% {
+    background: url(img/bird3.png);
+    background-size: 100% 100%; }
+  37.5% {
+    background: url(img/bird4.png);
+    background-size: 100% 100%; }
+  50% {
+    background: url(img/bird5.png);
+    background-size: 100% 100%; }
+  65.7% {
+    background: url(img/bird6.png);
+    background-size: 100% 100%; }
+  75% {
+    background: url(img/bird7.png);
+    background-size: 100% 100%; }
+  87.5% {
+    background: url(img/bird8.png);
+    background-size: 100% 100%; }
+  100% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; } }
+
+@-o-keyframes myFrist {
+  0% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; }
+  12.5% {
+    background: url(img/bird2.png);
+    background-size: 100% 100%; }
+  25% {
+    background: url(img/bird3.png);
+    background-size: 100% 100%; }
+  37.5% {
+    background: url(img/bird4.png);
+    background-size: 100% 100%; }
+  50% {
+    background: url(img/bird5.png);
+    background-size: 100% 100%; }
+  65.7% {
+    background: url(img/bird6.png);
+    background-size: 100% 100%; }
+  75% {
+    background: url(img/bird7.png);
+    background-size: 100% 100%; }
+  87.5% {
+    background: url(img/bird8.png);
+    background-size: 100% 100%; }
+  100% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; } }
+
+@keyframes myFrist {
+  0% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; }
+  12.5% {
+    background: url(img/bird2.png);
+    background-size: 100% 100%; }
+  25% {
+    background: url(img/bird3.png);
+    background-size: 100% 100%; }
+  37.5% {
+    background: url(img/bird4.png);
+    background-size: 100% 100%; }
+  50% {
+    background: url(img/bird5.png);
+    background-size: 100% 100%; }
+  65.7% {
+    background: url(img/bird6.png);
+    background-size: 100% 100%; }
+  75% {
+    background: url(img/bird7.png);
+    background-size: 100% 100%; }
+  87.5% {
+    background: url(img/bird8.png);
+    background-size: 100% 100%; }
+  100% {
+    background: url(img/bird1.png);
+    background-size: 100% 100%; } }
