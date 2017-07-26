@@ -9,15 +9,15 @@ function initbox(){
 	if (!dom&&!ie&&!ns4){return;}
 	crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin;
 	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
-	crossobj.top=scroll_top-50+'px';
+	crossobj.top=scroll_top-70+'px';
 	crossobj.left=(document.body.offsetWidth-550)/2+'px';
 	crossobj.visibility=(dom||ie)? "visible" : "show";
 	dropstart=setInterval("dropin()",50);
 }
 function dropin(){
 	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
-	if (parseInt(crossobj.top)<50+scroll_top){
-		crossobj.top=parseInt(crossobj.top)+40+'px';
+	if (parseInt(crossobj.top)<scroll_top-30){
+		crossobj.top=parseInt(crossobj.top)+32+'px';
 	}
 	else{
 		clearInterval(dropstart);
