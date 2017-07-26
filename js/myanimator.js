@@ -1,6 +1,50 @@
-var timer = setInterval(function(){
+var ie=document.all;
+var dom=document.getElementById;
+var ns4=document.layers;
+var bouncelimit=32; //(must be divisible by 8)
+var curtop;
+var direction="up";
+var boxheight='';
+function initbox(){
+	if (!dom&&!ie&&!ns4){return;}
+	crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin;
+	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
+	crossobj.top=scroll_top-250+'px';
+	crossobj.left=(document.body.offsetWidth-400)/2+'px';
+	crossobj.visibility=(dom||ie)? "visible" : "show";
+	dropstart=setInterval("dropin()",50);
+}
+function dropin(){
+	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
+	if (parseInt(crossobj.top)<100+scroll_top){
+		crossobj.top=parseInt(crossobj.top)+40+'px';
+	}
+	else{
+		clearInterval(dropstart);
+		bouncestart=setInterval("bouncein()",50);
+	}
+}
+function bouncein(){
+	crossobj.top=parseInt(crossobj.top)-bouncelimit+'px';
+	if (bouncelimit<0){
+		bouncelimit+=8;	
+	}
+	bouncelimit=bouncelimit*-1;
+	if (bouncelimit==0){
+		clearInterval(bouncestart);
+	}
+}
+function dismissbox(){
+	if (window.bouncestart) clearInterval(bouncestart)
+	{crossobj.visibility="hidden";}
+}
+
+
+
+var timer = setInterval("birdfly()",1000);
+function birdfly(){
 	$(".box > div").animate({
-		'marginLeft': (document.body.offsetWidth-141)/2,
+		'marginLeft': (document.body.scrollWidth-400)/2,
 	},{queue:true, duration:5000,complete:function(){
 		 $(".box > div").css('transform','rotateY(180deg)');
 	}}).animate({
@@ -8,8 +52,9 @@ var timer = setInterval(function(){
 	},1000,function(){
 		$(".box > div").css('transform','rotateY(0deg)');
 	});
-},1000);
-
+}
+setTimeout('initbox()',6200);
+setTimeout("clearInterval(timer)",1000);
 
 var Wave = function () {
 
