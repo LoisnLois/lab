@@ -10,7 +10,11 @@ function initbox(){
 	crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin;
 	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
 	crossobj.top=scroll_top-70+'px';
-	crossobj.left=(document.body.offsetWidth-550)/2+'px';
+	if(document.body.offsetWidth > 660){
+		crossobj.left=(document.body.offsetWidth-550)/2+'px';
+	}else{
+		crossobj.left=(document.body.offsetWidth-350)/2+'px';
+	}
 	crossobj.visibility=(dom||ie)? "visible" : "show";
 	dropstart=setInterval("dropin()",50);
 }
