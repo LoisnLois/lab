@@ -1,484 +1,391 @@
-<html>
-	<head>
-		<style>
-			html,body {
-				overflow:hidden;
-				position:absolute;
-				height:100%;
-				width:100%;
-				margin:0;
-				padding:0;}
-		</style>
-	</head>
-	<body>
-		<canvas id="canvas" width="782" height="923"></canvas>
-		<canvas id="canvasName" width="782" height="523"></canvas>
-		<script>
-			var Wave = function () {
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Lois's LAB</title>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<style type="text/css">
+html,body {overflow:hidden;position:absolute;height:100%;width:100%;margin:0;padding:0;}
+*{
+	margin: 0;
+	padding: 0;
+}
+.box{
+	width: 564px;
+	height: 170px;
+}
+.box div{
+	width: 141px;
+	height: 85px;
+	float: left;
+	margin-top: 75px;
+	margin-left: -141px;
+	
+	background:url(img/bird1.png);/* 用于Firefox 可无视 */
+	
+	-webkit-animation: myFrist 1s linear infinite;
+	-moz-animation: myFrist 1s linear infinite;
+	-o-animation: myFrist 1s linear infinite;
+	animation: myFrist 1s linear infinite;
+}
+@-webkit-keyframes myFrist
+{
+	0%    {background:url(img/bird1.png);background-size: 100% 100%}
+	12.5% {background:url(img/bird2.png);background-size: 100% 100%}
+	25%   {background:url(img/bird3.png);background-size: 100% 100%}
+	37.5% {background:url(img/bird4.png);background-size: 100% 100%}
+	50%   {background:url(img/bird5.png);background-size: 100% 100%}
+	65.7% {background:url(img/bird6.png);background-size: 100% 100%}
+	75%   {background:url(img/bird7.png);background-size: 100% 100%}
+	87.5% {background:url(img/bird8.png);background-size: 100% 100%}
+	100%  {background:url(img/bird1.png);background-size: 100% 100%}
+}
+@-moz-keyframes myFrist
+{
+	0%    {background:url(img/bird1.png);background-size: 100% 100%}
+	12.5% {background:url(img/bird2.png);background-size: 100% 100%}
+	25%   {background:url(img/bird3.png);background-size: 100% 100%}
+	37.5% {background:url(img/bird4.png);background-size: 100% 100%}
+	50%   {background:url(img/bird5.png);background-size: 100% 100%}
+	65.7% {background:url(img/bird6.png);background-size: 100% 100%}
+	75%   {background:url(img/bird7.png);background-size: 100% 100%}
+	87.5% {background:url(img/bird8.png);background-size: 100% 100%}
+	100%  {background:url(img/bird1.png);background-size: 100% 100%}
+}
+@-o-keyframes myFrist
+{
+	0%    {background:url(img/bird1.png);background-size: 100% 100%}
+	12.5% {background:url(img/bird2.png);background-size: 100% 100%}
+	25%   {background:url(img/bird3.png);background-size: 100% 100%}
+	37.5% {background:url(img/bird4.png);background-size: 100% 100%}
+	50%   {background:url(img/bird5.png);background-size: 100% 100%}
+	65.7% {background:url(img/bird6.png);background-size: 100% 100%}
+	75%   {background:url(img/bird7.png);background-size: 100% 100%}
+	87.5% {background:url(img/bird8.png);background-size: 100% 100%}
+	100%  {background:url(img/bird1.png);background-size: 100% 100%}
+}
+@keyframes myFrist
+{
+	0%    {background:url(img/bird1.png);background-size: 100% 100%}
+	12.5% {background:url(img/bird2.png);background-size: 100% 100%}
+	25%   {background:url(img/bird3.png);background-size: 100% 100%}
+	37.5% {background:url(img/bird4.png);background-size: 100% 100%}
+	50%   {background:url(img/bird5.png);background-size: 100% 100%}
+	65.7% {background:url(img/bird6.png);background-size: 100% 100%}
+	75%   {background:url(img/bird7.png);background-size: 100% 100%}
+	87.5% {background:url(img/bird8.png);background-size: 100% 100%}
+	100%  {background:url(img/bird1.png);background-size: 100% 100%}
+}
+</style>
 
-				var addEvent = function (o, e, f) {
-					o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on'+e, function () {f.call(o)});
-				};
+</head>
+<body>
 
-				var WIDTH = window.innerWidth,
-					HEIGHT = window.innerHeight,
-					DENSITY = .75,
-					FRICTION = 1.14,
-					MOUSEPULL = .09,
-					AOE = 200,
-					DETAIL = Math.round(WIDTH/50),
-					WATER_DENSITY = 1.07,
-					AIR_DENSITY = 1.02,
-					MAX_BUBBLES = 10,
-					BIG_BUBBLE_DISSOLVE = 20,
-					SMALL_BUBBLE_DISSOLVE = 6,
-					isMouseDown = false,
-					ms = {x: 0, y: 0},
-					mp = {x: 0, y: 0},
-					canvas,
-					ctx,
-					particles = [],
-					bubbles = [],
-					mainTimer,
-					twitchTimer;
+<div class="box">
+	<div></div>
+</div>
+<canvas id="canvas" width="1366" height="736">
+	
+<script type="text/javascript">
+var timer = setInterval(function(){
+	$(".box > div").animate({
+		'marginLeft': (document.body.offsetWidth-141)/2,
+	},{queue:true, duration:5000,complete:function(){
+		 $(".box > div").css('transform','rotateY(180deg)');
+	}}).animate({
+		'marginLeft': -141,
+	},1000,function(){
+		$(".box > div").css('transform','rotateY(0deg)');
+	});
+},1000);
 
-				var init = function (id) {
-					canvas = document.getElementById(id);
-					var _this = this;
-					if (canvas && canvas.getContext) {
-						ctx = canvas.getContext('2d');
 
-						// Generate wave particles
-						for (var i = 0; i <= DETAIL; i ++) {
-							particles.push({
-								x: WIDTH/(DETAIL-4)*(i-2),
-								y: HEIGHT/2,
-								original: {x: 0, y: HEIGHT/2},
-								velocity: {x: 0, y: Math.random()*3},
-								force: {x: 0, y: 0},
-								mass: 10
-							});
-						}
+var Wave = function () {
 
-						addEvent(canvas, 'mousemove', mouseMove);
-						addEvent(canvas, 'mousedown', mouseDown);
-						addEvent(canvas, 'mouseup', mouseUp);
-						addEvent(window, 'resize', resize);
+	var addEvent = function (o, e, f) {
+		o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on'+e, function () {f.call(o)});
+	};
 
-						mainTimer = setInterval(mainLoop, 40);
-						twitchTimer = setInterval(createBubble, 400);
+	var WIDTH = window.innerWidth,
+		HEIGHT = window.innerHeight,
+		DENSITY = .75,
+		FRICTION = 1.14,
+		MOUSEPULL = .09,
+		AOE = 200,
+		DETAIL = Math.round(WIDTH/50),
+		WATER_DENSITY = 1.07,
+		AIR_DENSITY = 1.02,
+		MAX_BUBBLES = 10,
+		BIG_BUBBLE_DISSOLVE = 20,
+		SMALL_BUBBLE_DISSOLVE = 6,
+		isMouseDown = false,
+		ms = {x: 0, y: 0},
+		mp = {x: 0, y: 0},
+		canvas,
+		ctx,
+		particles = [],
+		bubbles = [],
+		mainTimer,
+		twitchTimer;
 
-						createBubble();
-						resize();
-					} 
-				}
-				//extend(init.prototype, {
-					
-				//})
+	var init = function (id) {
+		canvas = document.getElementById(id);
+		var _this = this;
+		if (canvas && canvas.getContext) {
+			ctx = canvas.getContext('2d');
 
-				function mainLoop () {
-					var gradient = ctx.createLinearGradient(WIDTH*.5, HEIGHT*.2, WIDTH*.5, HEIGHT);
-					gradient.addColorStop(0, '#00aabb');
-					gradient.addColorStop(1, 'rgba(0,200,250,0)');
+			// Generate wave particles
+			for (var i = 0; i <= DETAIL; i ++) {
+				particles.push({
+					x: WIDTH/(DETAIL-4)*(i-2),
+					y: HEIGHT/2,
+					original: {x: 0, y: HEIGHT/2},
+					velocity: {x: 0, y: Math.random()*3},
+					force: {x: 0, y: 0},
+					mass: 10
+				});
+			}
 
-					ctx.clearRect(0, 0, WIDTH, HEIGHT);
-					ctx.fillStyle = gradient;
-					ctx.beginPath();
-					ctx.moveTo(particles[0].x, particles[0].y);
+			addEvent(canvas, 'mousemove', mouseMove);
+			addEvent(canvas, 'mousedown', mouseDown);
+			addEvent(canvas, 'mouseup', mouseUp);
+			addEvent(window, 'resize', resize);
 
-					var current, previous, next;
-					for (var i=0; i< particles.length; i ++) {
-						current = particles[i];
-						previous = particles[i-1];
-						next = particles[i+1];
+			mainTimer = setInterval(mainLoop, 40);
+			twitchTimer = setInterval(createBubble, 400);
 
-						if (previous && next) {
-							var forceY = 0;
-							forceY += -DENSITY * (previous.y - current.y);
-							forceY += DENSITY * (current.y - next.y);
-							forceY += DENSITY/15 * (current.y - current.original.y);	
-							current.velocity.y += -(forceY/current.mass) + current.force.y;
-							current.velocity.y /= FRICTION;
-							current.force.y /= FRICTION;
-							current.y += current.velocity.y;
+			createBubble();
+			resize();
+		} 
+	}
+	//extend(init.prototype, {
+		
+	//})
 
-							var distance = getDistanceBetween(mp, current);
-							if (distance < AOE) {
-								var distance = getDistanceBetween(mp, {x: current.original.x, y: current.original.y});
-								ms.x = ms.x * .98;
-								ms.y = ms.y * .98;
+	function mainLoop () {
+		var gradient = ctx.createLinearGradient(WIDTH*.5, HEIGHT*.2, WIDTH*.5, HEIGHT);
+		gradient.addColorStop(0, '#00aabb');
+		gradient.addColorStop(1, 'rgba(0,200,250,0)');
 
-								current.force.y += (MOUSEPULL * (1-(distance/AOE))) * ms.y;
-							}
+		ctx.clearRect(0, 0, WIDTH, HEIGHT);
+		ctx.fillStyle = gradient;
+		ctx.beginPath();
+		ctx.moveTo(particles[0].x, particles[0].y);
 
-							ctx.quadraticCurveTo(previous.x, previous.y, previous.x + (current.x-previous.x)/2, previous.y+(current.y-previous.y)/2);
-						}
-					}
+		var current, previous, next;
+		for (var i=0; i< particles.length; i ++) {
+			current = particles[i];
+			previous = particles[i-1];
+			next = particles[i+1];
 
-					ctx.lineTo(particles[particles.length-1].x, particles[particles.length-1].y);
-					ctx.lineTo(WIDTH, HEIGHT);
-					ctx.lineTo(0, HEIGHT);
-					ctx.lineTo(particles[0].x, particles[0].y);
-					ctx.fill();
-					ctx.fillStyle = '#rgba(0,200,255,0)';
+			if (previous && next) {
+				var forceY = 0;
+				forceY += -DENSITY * (previous.y - current.y);
+				forceY += DENSITY * (current.y - next.y);
+				forceY += DENSITY/15 * (current.y - current.original.y);	
+				current.velocity.y += -(forceY/current.mass) + current.force.y;
+				current.velocity.y /= FRICTION;
+				current.force.y /= FRICTION;
+				current.y += current.velocity.y;
 
-					ctx.beginPath();
-					for (var i=0; i<bubbles.length; i++) {
-						var b = bubbles[i],
-							p = getClosetParticle(b);
-							d = getDistanceBetween(mp, b);
+				var distance = getDistanceBetween(mp, current);
+				if (distance < AOE) {
+					var distance = getDistanceBetween(mp, {x: current.original.x, y: current.original.y});
+					ms.x = ms.x * .98;
+					ms.y = ms.y * .98;
 
-						b.velocity.y /= (b.y > p.y) ? WATER_DENSITY : AIR_DENSITY;
-						b.velocity.y += (b.y > p.y) ? -((b.y-p.y)*.01)/b.mass : 1/b.mass;
-						b.y += b.velocity.y;
-
-						if (b.x > WIDTH-b.currentSize) b.velocity.x = -b.velocity.x;
-						if (b.x < b.currentSize) b.velocity.x = Math.abs(b.velocity.x);
-
-						b.velocity.x /= 1.04;
-						b.velocity.x = b.velocity.x < 0 ? Math.min(b.velocity.x, -.8/b.mass) : Math.max(b.velocity.x, .8/b.mass);
-						b.x += b.velocity.x;
-
-						if (b.dissolved === false) {
-							ctx.moveTo(b.x, b.y);
-							ctx.arc(b.x, b.y, b.currentSize, 0, Math.PI*2, true);
-						} else {
-							b.velocity.x /= 1.15;
-							b.velocity.y /= 1.05;
-
-							while(b.children.length < b.dissolveSize) {
-								b.children.push({
-									x: 0,
-									y: 0,
-									size: Math.random()*b.dissolveSize,
-									velocity: {
-										x: Math.random()*20 - 10,
-										y: -(Math.random()*10)
-									}
-								})
-							}
-
-							for (var j =0; j< b.children.length; j ++) {
-								var c = b.children[j];
-								c.x += c.velocity.x;
-								c.y += c.velocity.y;
-								c.velocity.x /= 1.1;
-								c.velocity.y += .4;
-								c.size /= 1.1;
-
-								ctx.moveTo(b.x+c.x, b.y+c.y);
-								ctx.arc(b.x+c.y, b.y+c.y, c.size, 0, Math.PI*2, true);
-							}
-						}
-					}
-					ctx.fill();
-				}
-
-				function getClosetParticle(point) {
-					var closestIndex = 0, 
-						closestDistance = 1000;
-					for (var i = 0; i < particles.length; i ++) {
-						var thisDistance = getDistanceBetween(particles[i], point);
-						if (thisDistance < closestDistance) {
-							closestDistance = thisDistance;
-							closestIndex = i;
-						}
-					}
-
-					return particles[closestIndex];
-				}
-
-				function createBubble () {
-					if (bubbles.length > MAX_BUBBLES) {
-						var i = 0;
-						if (bubbles[i].dissolved) {
-							for (; i < bubbles.length; i ++) {
-								if (bubbles[i].dissolved == false) {
-									bubbles[i].dissolveSize = SMALL_BUBBLE_DISSOLVE;
-									dissolveBubble(i);
-									break;
-								}
-							}
-						} else {
-							dissolveBubble(i)
-						}
-					}
-
-					var minSize = 15,
-						maxSize = 30,
-						size = minSize + Math.random() * (maxSize - minSize),
-						catapult = 30,
-						b = {
-							x: maxSize + (Math.random() * (WIDTH- maxSize)),
-							y: HEIGHT - maxSize,
-							velocity: {
-								x: (Math.random()*catapult) - catapult/2,
-								y: 0
-							},
-							size: size,
-							mass: (size/maxSize) + 1,
-							dissolved: false,
-							dissolveSize: BIG_BUBBLE_DISSOLVE,
-							children: []
-						};
-
-						b.currentSize = b.size;
-						bubbles.push(b);
+					current.force.y += (MOUSEPULL * (1-(distance/AOE))) * ms.y;
 				}
 
-				function dissolveBubble(index) {
-					var b = bubbles[index];
-					if (b.dissolved == false) {
-						b.dissolved = true;
-						setTimeout(function () {
-							for (var i=0; i<bubbles.length; i ++) {
-								if (bubbles[i] == b) {
-									bubbles.splice(i, 1);
-									break;
-								}
-							}
-						}, 2000)
-					}
-				}
-
-				function getDistanceBetween (p1, p2) {
-					var dx = p2.x - p1.x,
-						dy = p2.y - p1.y;
-					return Math.sqrt(dx*dx + dy*dy);
-				}
-
-				function mouseMove(e) {
-					ms.x = Math.max( Math.min( e.layerX - mp.x, 40 ), -40 );
-					ms.y = Math.max( Math.min( e.layerY - mp.y, 40 ), -40 );
-					
-					mp.x = e.layerX;
-					mp.y = e.layerY;
-					
-				}
-				function mouseDown(e) {
-					mouseIsDown = true;
-					
-					var len = bubbles.length;
-					
-					var closestIndex = 0;
-					var closestDistance = 1000;
-					
-					for( var i = 0; i < len; i++ ) {
-						var thisDistance = getDistanceBetween( bubbles[i], mp );
-						
-						if( thisDistance < closestDistance ) {
-							closestDistance = thisDistance;
-							closestIndex = i;
-						}
-						
-					}
-					
-				}
-				function mouseUp(e) {
-					mouseIsDown = false;
-				}
-				
-				
-				function resize () {
-					WIDTH = window.innerWidth;
-					HEIGHT = window.innerHeight;
-					canvas.width = WIDTH;
-					canvas.height = HEIGHT;
-
-					for (var i=0; i<=DETAIL; i++) {
-						particles[i].x = WIDTH/(DETAIL-4)*(i-2);
-						particles[i].y = HEIGHT * .5;
-						particles[i].original.x = particles[i].x;
-						particles[i].original.y = particles[i].y;
-					}
-				}
-
-				return init;
-			}();
-
-			
-
-		var TextParticles = function () {
-
-		    var extend = function (target, source, isOverwrite) {
-		        if (isOverwrite == undefined) isOverwrite = true;
-		        for (var key in source) {
-		            if (!(key in target) || isOverwrite) {
-		                target[key] = source[key];
-		            }
-		        }
-		        return target;
-		    };
-
-		    var $ = function (id) {
-		        return document.getElementById(id) || id;
-		    };
-		    var $$ = function (tag, p) {
-		        return p.getElementsByTagName(tag);
-		    };
-		    var addEvent = function (o, e, f) {
-		        o.addEventListener ? o.addEventListener(e, f, false) : o.attachEvent('on'+e, function () {f.call(o)});
-		    }
-			window.requesetAnimFrame = function () {
-				return window.requesetAnimationFrame ||
-					window.webkitRequestAnimationFrame ||
-					window.mozRequestAnimationFrame ||
-					window.oRequestAnimationFrame ||
-					window.msRequestAnimationFrame ||
-					function (fn) {
-						window.setTimeout(fn, 1000/60);
-					};
-			}();
-		    
-		    var mouseX = 0, mouseY = 0;
-		    function onMousemove (e) {
-		        mouseX = e.clientX;
-		        mouseY = e.clientY;
-		    }
-		    function onResize (e) {
-		        
-		    }
-
-		    var init = function (opt) {
-		        this.opt = {
-		            canvasId: null
-		        }
-				this.place = 0;
-				
-		        extend(this.opt, opt);
-		        
-		        this.initialize();
-		    }
-		    init.prototype = {
-		        initialize: function () {
-		            if (this.opt.canvasId == null) {
-		                this.genCanvas();
-		            } 
-		            else {
-		                this.canvas = $(this.opt.canvasId);
-		            }
-		            
-		            this.particles = [];
-		            
-		            this.ctx = this.canvas.getContext('2d');
-		            this.setCvsStyle();
-		            this.fillText();
-		            this.getImageData();
-		            this.bindEvent();
-		            this.loop();
-		        },
-		        bindEvent: function () {
-		            var _this = this;
-		            addEvent(this.canvas, 'mousemove', onMousemove);
-		            addEvent(window, 'resize', function (e) {
-		                _this.setCvsStyle();
-		            });
-		        },
-		        loop: function () {
-		            var _this = this;
-		            /*setInterval(function () {
-		                _this.doFrame();
-					}, 20);
-					*/
-					requesetAnimFrame(function () {_this.loop()});
-					this.doFrame();
-		        },
-		        doFrame: function () {
-		            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		            for (var i = 0; i < this.particles.length; i ++) {
-		                var p = this.particles[i];
-		                p.update();
-		            }
-		        },
-		        getImageData: function () {
-		            var imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
-		            for (var x = 0; x < imageData.width; x ++) {
-		                for (var y = 0; y < imageData.height; y ++) {
-		                    //var i = 4*(x * imageData.height + y);
-		                    var i = 4*(y * imageData.width + x);
-		                    if (imageData.data[i + 3] > 128) {
-								this.place ++;
-		                        (this.place%4 == 0) && this.particles.push(new Particle(x, y, this.canvas));
-		                    }
-		                }
-		            }
-		        },
-		        fillText: function () {
-		            this.ctx.textAlign = 'center';
-		            this.ctx.textBaseline = 'middle';
-		            this.ctx.font = '200px sans-serif';
-		            this.ctx.fillText('AlloyTeam', this.canvas.width/2, this.canvas.height/3);
-		        },
-		        setCvsStyle: function () {
-		            this.canvas.width = window.innerWidth;
-		            this.canvas.height = window.innerHeight;
-		        },
-		        genCanvas: function () {
-		            var canvas = document.getElementById('canvasName');
-		            //document.body.appendChild(canvas);
-		            this.canvas = canvas;
-		            return canvas;
-		        }
-		    };
-		    
-		    var Particle = function (x, y, canvas) {
-		        this.endX = x;
-		        this.endY = y;
-		        this.canvas = canvas;
-		        this.ctx = this.canvas.getContext('2d');
-		        this.x = Math.random() * this.canvas.width;
-				this.y = Math.random() * this.canvas.height;
-
-				this.vx = Math.random()*10 - 5;
-				this.vy = Math.random()*10 - 5;
-
-		    }
-			Particle.prototype = {
-		        move: function () {
-					var disX = this.endX - this.x;
-					var disY = this.endY - this.y;
-					var dis = Math.sqrt(Math.pow(disX, 2) + Math.pow(disY, 2));
-					var force = dis * .01;
-					var angle = Math.atan2(disY, disX); // atan2(x, y) 返回点(x, y)到x 轴的弧度
-		            
-		            var mouseF = 0, mouseA = 0;
-		            if (mouseX > 0 && mouseY > 0) {
-		                var dis = Math.pow((this.x - mouseX), 2) + Math.pow((this.y - mouseY), 2);
-		                mouseF = Math.min(5000/dis, 5000);
-		                mouseA = Math.atan2(this.y - mouseY, this.x - mouseX);
-		            } else {
-		                mouseF = 0;
-		                mouseA = 0;
-		            }
-
-					this.vx += force * Math.cos(angle) + mouseF * Math.cos(mouseA);
-					this.vy += force * Math.sin(angle) + mouseA * Math.sin(mouseA);
-
-					this.vx *= 0.92;
-					this.vy *= .92;
-
-					//
-		            this.x += this.vx;
-		            this.y += this.vy;
-		        },
-		        render: function () {
-		            this.ctx.fillStyle = '#111';
-		            this.ctx.fillRect(this.x, this.y, 2, 2);
-		        },
-		        update: function () {
-		            this.move();
-		            this.render();
-		        }
-		    }
-		    
-		    return init;
-		}();
-
-		onload = function () {
-		    new TextParticles();
-			new Wave('canvas');
+				ctx.quadraticCurveTo(previous.x, previous.y, previous.x + (current.x-previous.x)/2, previous.y+(current.y-previous.y)/2);
+			}
 		}
-		</script>
 
-	</body>
+		ctx.lineTo(particles[particles.length-1].x, particles[particles.length-1].y);
+		ctx.lineTo(WIDTH, HEIGHT);
+		ctx.lineTo(0, HEIGHT);
+		ctx.lineTo(particles[0].x, particles[0].y);
+		ctx.fill();
+		ctx.fillStyle = '#rgba(0,200,255,0)';
+
+		ctx.beginPath();
+		for (var i=0; i<bubbles.length; i++) {
+			var b = bubbles[i],
+				p = getClosetParticle(b);
+				d = getDistanceBetween(mp, b);
+
+			b.velocity.y /= (b.y > p.y) ? WATER_DENSITY : AIR_DENSITY;
+			b.velocity.y += (b.y > p.y) ? -((b.y-p.y)*.01)/b.mass : 1/b.mass;
+			b.y += b.velocity.y;
+
+			if (b.x > WIDTH-b.currentSize) b.velocity.x = -b.velocity.x;
+			if (b.x < b.currentSize) b.velocity.x = Math.abs(b.velocity.x);
+
+			b.velocity.x /= 1.04;
+			b.velocity.x = b.velocity.x < 0 ? Math.min(b.velocity.x, -.8/b.mass) : Math.max(b.velocity.x, .8/b.mass);
+			b.x += b.velocity.x;
+
+			if (b.dissolved === false) {
+				ctx.moveTo(b.x, b.y);
+				ctx.arc(b.x, b.y, b.currentSize, 0, Math.PI*2, true);
+			} else {
+				b.velocity.x /= 1.15;
+				b.velocity.y /= 1.05;
+
+				while(b.children.length < b.dissolveSize) {
+					b.children.push({
+						x: 0,
+						y: 0,
+						size: Math.random()*b.dissolveSize,
+						velocity: {
+							x: Math.random()*20 - 10,
+							y: -(Math.random()*10)
+						}
+					})
+				}
+
+				for (var j =0; j< b.children.length; j ++) {
+					var c = b.children[j];
+					c.x += c.velocity.x;
+					c.y += c.velocity.y;
+					c.velocity.x /= 1.1;
+					c.velocity.y += .4;
+					c.size /= 1.1;
+
+					ctx.moveTo(b.x+c.x, b.y+c.y);
+					ctx.arc(b.x+c.y, b.y+c.y, c.size, 0, Math.PI*2, true);
+				}
+			}
+		}
+		ctx.fill();
+	}
+
+	function getClosetParticle(point) {
+		var closestIndex = 0, 
+			closestDistance = 1000;
+		for (var i = 0; i < particles.length; i ++) {
+			var thisDistance = getDistanceBetween(particles[i], point);
+			if (thisDistance < closestDistance) {
+				closestDistance = thisDistance;
+				closestIndex = i;
+			}
+		}
+
+		return particles[closestIndex];
+	}
+
+	function createBubble () {
+		if (bubbles.length > MAX_BUBBLES) {
+			var i = 0;
+			if (bubbles[i].dissolved) {
+				for (; i < bubbles.length; i ++) {
+					if (bubbles[i].dissolved == false) {
+						bubbles[i].dissolveSize = SMALL_BUBBLE_DISSOLVE;
+						dissolveBubble(i);
+						break;
+					}
+				}
+			} else {
+				dissolveBubble(i)
+			}
+		}
+
+		var minSize = 15,
+			maxSize = 30,
+			size = minSize + Math.random() * (maxSize - minSize),
+			catapult = 30,
+			b = {
+				x: maxSize + (Math.random() * (WIDTH- maxSize)),
+				y: HEIGHT - maxSize,
+				velocity: {
+					x: (Math.random()*catapult) - catapult/2,
+					y: 0
+				},
+				size: size,
+				mass: (size/maxSize) + 1,
+				dissolved: false,
+				dissolveSize: BIG_BUBBLE_DISSOLVE,
+				children: []
+			};
+
+			b.currentSize = b.size;
+			bubbles.push(b);
+	}
+
+	function dissolveBubble(index) {
+		var b = bubbles[index];
+		if (b.dissolved == false) {
+			b.dissolved = true;
+			setTimeout(function () {
+				for (var i=0; i<bubbles.length; i ++) {
+					if (bubbles[i] == b) {
+						bubbles.splice(i, 1);
+						break;
+					}
+				}
+			}, 2000)
+		}
+	}
+
+	function getDistanceBetween (p1, p2) {
+		var dx = p2.x - p1.x,
+			dy = p2.y - p1.y;
+		return Math.sqrt(dx*dx + dy*dy);
+	}
+
+	function mouseMove(e) {
+		ms.x = Math.max( Math.min( e.layerX - mp.x, 40 ), -40 );
+		ms.y = Math.max( Math.min( e.layerY - mp.y, 40 ), -40 );
+		
+		mp.x = e.layerX;
+		mp.y = e.layerY;
+		
+	}
+	function mouseDown(e) {
+		mouseIsDown = true;
+		
+		var len = bubbles.length;
+		
+		var closestIndex = 0;
+		var closestDistance = 1000;
+		
+		for( var i = 0; i < len; i++ ) {
+			var thisDistance = getDistanceBetween( bubbles[i], mp );
+			
+			if( thisDistance < closestDistance ) {
+				closestDistance = thisDistance;
+				closestIndex = i;
+			}
+			
+		}
+		
+	}
+	function mouseUp(e) {
+		mouseIsDown = false;
+	}
+	
+	
+	function resize () {
+		WIDTH = window.innerWidth;
+		HEIGHT = window.innerHeight;
+		canvas.width = WIDTH;
+		canvas.height = HEIGHT;
+
+		for (var i=0; i<=DETAIL; i++) {
+			particles[i].x = WIDTH/(DETAIL-4)*(i-2);
+			particles[i].y = HEIGHT * .5;
+			particles[i].original.x = particles[i].x;
+			particles[i].original.y = particles[i].y;
+		}
+	}
+
+	return init;
+}();
+
+new Wave('canvas');
+
+</script>
+
+</body>
 </html>
