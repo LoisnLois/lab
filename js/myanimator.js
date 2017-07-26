@@ -9,14 +9,14 @@ function initbox(){
 	if (!dom&&!ie&&!ns4){return;}
 	crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin;
 	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
-	crossobj.top=scroll_top-250+'px';
-	crossobj.left=(document.body.offsetWidth-400)/2+'px';
+	crossobj.top=scroll_top-50+'px';
+	crossobj.left=(document.body.offsetWidth-550)/2+'px';
 	crossobj.visibility=(dom||ie)? "visible" : "show";
 	dropstart=setInterval("dropin()",50);
 }
 function dropin(){
 	scroll_top=(ie)? document.body.scrollTop : window.pageYOffset;
-	if (parseInt(crossobj.top)<100+scroll_top){
+	if (parseInt(crossobj.top)<50+scroll_top){
 		crossobj.top=parseInt(crossobj.top)+40+'px';
 	}
 	else{
@@ -44,7 +44,7 @@ function dismissbox(){
 var timer = setInterval("birdfly()",1000);
 function birdfly(){
 	$(".box > div").animate({
-		'marginLeft': (document.body.scrollWidth-400)/2,
+		'marginLeft': (document.body.scrollWidth-550)/2,
 	},{queue:true, duration:5000,complete:function(){
 		 $(".box > div").css('transform','rotateY(180deg)');
 	}}).animate({

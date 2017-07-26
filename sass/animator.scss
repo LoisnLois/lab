@@ -13,13 +13,24 @@ html,body {
 }
 
 #dropin{
-	visibility:hidden;
-	width:400px;
+	visibility: hidden;
+	width:550px;
 	position:absolute;
 	left:460px;
-	top:250px;
-	height:200px;
-	background:#f5f5f5;
+	top:50px;
+	height:400px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-image: url('../../img/dailogbg1.png');
+	z-index: -3;
+}
+.panelhome{
+	padding:200px 0 0 80px;
+	font-size: 36px;
+	width: 420px;
+	overflow: hidden;
+	word-wrap: break-word;
+	word-break: keep-all;
 }
 
 .box{
