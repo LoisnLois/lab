@@ -67,8 +67,9 @@ function birdfly(){
 }
 setTimeout('initbox()',6200);
 var shinytimer = setInterval("shiny()",500);
-setTimeout("clearInterval(shinytimer)",11000);
+setTimeout("clearInterval(shinytimer);$('.panelhome i').show();",11000);
 setTimeout("clearInterval(timer)",1000);
+
 
 var Wave = function () {
 
