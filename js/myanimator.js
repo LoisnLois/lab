@@ -38,12 +38,20 @@ function bouncein(){
 		clearInterval(bouncestart);
 	}
 }
+
 function dismissbox(){
 	if (window.bouncestart) clearInterval(bouncestart)
 	{crossobj.visibility="hidden";}
 }
 
-
+function shiny(){
+	var disp = $('.panelhome i').css("display");
+	if(disp === "none"){
+		$('.panelhome i').show();
+	}else{
+		$('.panelhome i').hide();
+	}
+}
 
 var timer = setInterval("birdfly()",1000);
 function birdfly(){
@@ -58,6 +66,8 @@ function birdfly(){
 	});
 }
 setTimeout('initbox()',6200);
+var shinytimer = setInterval("shiny()",500);
+setTimeout("clearInterval(shinytimer)",11000);
 setTimeout("clearInterval(timer)",1000);
 
 var Wave = function () {

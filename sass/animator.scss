@@ -12,12 +12,22 @@ html,body {
 	padding:0;
 	font-family:"Arial" !important;
 }
-a{text-decoration: none;}
-a:link {color: white;}
-a:visited {color: white;}
-a:hover {color: red;}
-a:active {color:white;}
-
+a{
+	text-decoration: none;
+	&:link{
+		color: #FFFF32;
+	}
+	&:visited{
+		color: #FFFF32;
+	}
+	&:hover{
+		color: rgb(0,200,250);
+		cursor:pointer;
+	}
+	&:active{
+		color: #FFFF32;
+	}
+}
 
 #dropin{
 	visibility: hidden;
@@ -29,10 +39,18 @@ a:active {color:white;}
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-image: url('../../img/dailogbg1.png');
-	z-index: -3;
+	i{
+		position:absolute;
+		right: 210px;
+		width: 0;
+		height: 0;
+		display: block;
+		border:12px solid transparent;
+		border-top: 15px solid white;
+	}
 }
 .panelhome{
-	padding:200px 0 0 80px;
+	padding:200px 20px 0 80px;
 	font-size: 36px;
 	width: 420px;
 	overflow: hidden;

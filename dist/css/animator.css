@@ -14,18 +14,15 @@ html, body {
 
 a {
   text-decoration: none; }
-
-a:link {
-  color: white; }
-
-a:visited {
-  color: white; }
-
-a:hover {
-  color: red; }
-
-a:active {
-  color: white; }
+  a:link {
+    color: #FFFF32; }
+  a:visited {
+    color: #FFFF32; }
+  a:hover {
+    color: #00c8fa;
+    cursor: pointer; }
+  a:active {
+    color: #FFFF32; }
 
 #dropin {
   visibility: hidden;
@@ -36,11 +33,18 @@ a:active {
   height: 400px;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  background-image: url("../../img/dailogbg1.png");
-  z-index: -3; }
+  background-image: url("../../img/dailogbg1.png"); }
+  #dropin i {
+    position: absolute;
+    right: 210px;
+    width: 0;
+    height: 0;
+    display: block;
+    border: 12px solid transparent;
+    border-top: 15px solid white; }
 
 .panelhome {
-  padding: 200px 0 0 80px;
+  padding: 200px 20px 0 80px;
   font-size: 36px;
   width: 420px;
   overflow: hidden;
