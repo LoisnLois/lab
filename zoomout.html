@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>zoom out</title>
+		<style type="text/css">
+			//定位，大图显示区域和阴影区域最开始不显示
+			#fangdajing{
+			      width:450px;
+			      height:450px;
+			      position:relative;
+			    }
+			    .small{
+			      width:450px;
+			      height:450px;
+			      position:absolute;
+			      left:0px;
+			      top:0px;
+			    }
+			    .shadow{
+			      width:200px;
+			      height:200px;
+			      background:yellow;
+			      opacity:0.3;
+			      position:absolute;
+			      top:0;
+			      left:0;
+			      display:none;
+			    }
+			    .big{
+			      position:absolute;
+			      left:450px;
+			      width:356px;
+			      height:356px;
+			      overflow:hidden;
+			      display:none;
+			    }
+		</style>
+
+	</head>
+	<body>
+		<div id="fangdajing">
+		    <div class="small">
+		      <img src="img/bird1.png" alt="">
+		      <div class="shadow"></div>
+		    </div>
+		    <div class="big">
+		      <img src="img/bird5.png" alt="">
+		    </div>
+		</div>
+		<script type="text/javascript">
+			var fdj = document.getElementById('fangdajing');
+			var big = document.getElementsByClassName('big')[0];
+			var small = document.getElementsByClassName('small')[0];
+			var shadow = document.getElementsByClassName('shadow')[0];
+			
+			small.onmouseover = function(){
+			      big.style.display = 'block';
+			      shadow.style.display = 'block';
+			}
+			small.onmousemove = function(ent){
+			  var e = ent || event;  //获取鼠标事件对象
+			  var left = e.pageX - fdj.offsetLeft - shadow.offsetWidth/2; //获取shadow在small内的相对位置
+			  var top = e.pageY - fdj.offsetTop - shadow.offsetHeight/2;
+			  var tw = fdj.offsetWidth - shadow.offsetWidth; //获取shadow最大可移动距离
+			  var th = fdj.offsetHeight - shadow.offsetHeight; 
+			  //对shadow进行限制
+			  if(left < 0){
+			    left = 0;      
+			  }else if(left > tw){
+			    left = tw;
+			  }
+			   if(top < 0){
+			    top = 0;      
+			  }else if(top > th){
+			    top = th;
+			  } 
+			  //赋值
+			  small.style.left = left + 'px';
+			  small.style.top = top + 'px';    
+			  //大图跟着移动
+			  var sl = left * big.offsetWidth / shadow.offsetWidth;
+			  var st = top * big.offsetHeight / shadow.offsetHeight;
+			  big.scrollTop = st;
+			  big.scrollLeft = sl; 
+			}
+
+			small.onmouseout = function(){
+			  big.style.display = 'none';
+			  shadow.style.display = 'none';    
+			}
+		</script>
+	</body>
+</html>
